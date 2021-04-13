@@ -1,12 +1,10 @@
 <?php
 
-    include 'db_con.php';
+    include 'functions/functions.php';
+    include 'functions/db_con.php';
 
-        
-    $stmt = "SELECT * FROM characters WHERE id='{$_GET['charId']}'";
-    $stmt = $pdo->prepare($stmt);
-    $stmt->execute();
-    $result = $stmt->fetchAll();
+    $result = selectSolo('characters', $_GET['charId']);
+
 
     
 ?>

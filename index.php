@@ -1,17 +1,13 @@
 <?php
+    include 'functions/db_con.php';
+    include 'functions/functions.php';
 
-    include 'db_con.php';
+    $result = selectAll('characters');
 
-        
-    $stmt = 'SELECT * FROM characters ORDER BY `name`';
-    $stmt = $pdo->prepare($stmt);
-    $stmt->execute();
-    $result = $stmt->fetchAll();
 
-    $stmt = 'SELECT COUNT(*) AS aantal FROM characters ';
-    $stmt = $pdo->prepare($stmt);
-    $stmt->execute();
-    $count = $stmt->fetchAll();
+   
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +23,7 @@
 
 <body>
     <header>
-        <h1>Alle <?php echo $count[0]['aantal'] ?> characters uit de database</h1>
+        <h1>Alle <?php echo Amount('*', 'aantal','characters'); ?> characters uit de database</h1>
 
     </header>
     <div id="container">
