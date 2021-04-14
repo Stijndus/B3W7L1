@@ -4,10 +4,7 @@
 
     $result = selectAll('characters');
 
-
-   
-
-    
+    $count = count($result)
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +20,7 @@
 
 <body>
     <header>
-        <h1>Alle <?php echo Amount('*', 'aantal','characters'); ?> characters uit de database</h1>
+        <h1>Alle <?php echo $count; ?> characters uit de database</h1>
 
     </header>
     <div id="container">

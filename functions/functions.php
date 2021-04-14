@@ -1,36 +1,49 @@
 <?php 
 
     function selectAll($table){
-        global $stmt;
-        global $pdo;
+        $pdo = dbCon();
 
-        $stmt = "SELECT * FROM `{$table}` ORDER BY `name`";
+        $stmt = "SELECT * FROM `:table` ORDER BY `name`";
         $stmt = $pdo->prepare($stmt);
+        $stmt->bindParam(':table', $table);
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
     }
 
-    function Amount($column, $name, $table){
-        global $stmt;
-        global $pdo;
-
-        $stmt = "SELECT COUNT({$column}) AS {$name} FROM {$table} ";
-        $stmt = $pdo->prepare($stmt);
-        $stmt->execute();
-        $count = $stmt->fetchAll();
-        return $count[0]["{$name}"];
-    }
 
     function selectSolo($table, $id){
-        global $stmt;
-        global $pdo;
+        $pdo = dbCon();
 
-        $stmt = "SELECT * FROM {$table} WHERE id='{$id}'";
+        $stmt = "SELECT * FROM ':table' WHERE id=':id'";
+        $stmt = $pdo->prepare($stmt);
+        $stmt->bindParam(':table', $table);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    function selectAllLocations(){
+        $pdo = dbCon();
+    
+        $stmt = "SELECT * FROM `locations`";
         $stmt = $pdo->prepare($stmt);
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
     }
+
+    function update($loc, $id){
+        $pdo = dbCon();
+
+        $stmt = "UPDATE characters SET location=:locations WHERE id=:id";
+        $stmt = $pdo->prepare($stmt);
+        $stmt->bindParam(':locations', $loc);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt;
+    }
+
 
 ?>
