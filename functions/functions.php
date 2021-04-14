@@ -1,26 +1,22 @@
 <?php 
 
-    function selectAll($table){
+    function selectAll(){
         $pdo = dbCon();
-
-        $stmt = "SELECT * FROM `:table` ORDER BY `name`";
+        $stmt = "SELECT * FROM `characters` ORDER BY `name`";
         $stmt = $pdo->prepare($stmt);
-        $stmt->bindParam(':table', $table);
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
     }
 
 
-    function selectSolo($table, $id){
+    function selectSolo($id){
         $pdo = dbCon();
-
-        $stmt = "SELECT * FROM ':table' WHERE id=':id'";
-        $stmt = $pdo->prepare($stmt);
-        $stmt->bindParam(':table', $table);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        $result = $stmt->fetch();
+        $stmt = "SELECT * FROM `characters` WHERE id=:id";
+        $result = $pdo->prepare($stmt);
+        $result->bindParam(':id', $id);
+        $result->execute();
+        $result = $result->fetch();
         return $result;
     }
 

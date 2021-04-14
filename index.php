@@ -2,7 +2,7 @@
     include 'functions/db_con.php';
     include 'functions/functions.php';
 
-    $result = selectAll('characters');
+    $result = selectAll();
 
     $count = count($result)
 ?>
@@ -13,8 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>All Characters</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="resources/css/style.css" rel="stylesheet" />
 </head>
 
@@ -33,6 +32,7 @@
                 <h2><?php echo $row['name'] ?></h2>
                 <div class="stats">
                     <ul class="fa-ul">
+                        <li><span class="fa-li"><i class="fas fa-home"></i></span> <?php echo $row['location'] ?></li>
                         <li><span class="fa-li"><i class="fas fa-heart"></i></span> <?php echo $row['health'] ?></li>
                         <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span> <?php echo $row['attack'] ?></li>
                         <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span> <?php echo $row['defense'] ?></li>

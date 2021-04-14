@@ -3,7 +3,7 @@
     include 'functions/functions.php';
     include 'functions/db_con.php';
 
-    $result = selectSolo('characters', $_GET['charId']);
+    $result = selectSolo($_GET['charId']);
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         update($_POST['selectStmt'], $_GET['charId']);
