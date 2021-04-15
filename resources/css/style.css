@@ -16,7 +16,7 @@ a:active {
     color: red;
 }
 
-#container, footer, header {
+#container, footer, header, .navbar {
     width: 960px;
     margin: 0 auto;
     background-color: white;
@@ -32,6 +32,18 @@ header {
 
 h1 {
     margin: 0;
+}
+
+.navbar{
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.navlist{
+    list-style-type: none;
+}
+.list-item{
+    display: inline-block;
 }
 
 .item{
@@ -101,6 +113,12 @@ header .backbutton {
     padding: 0;
     padding-left: 20px;
 }
+
+.locationName{
+    padding: 0;
+    margin: 5;
+}
+
 
 footer {
     margin-top: 10px;
