@@ -20,7 +20,7 @@
 
 <body>
     <header>
-        <h1>Alle <?php echo $count; ?> characters uit de database</h1>
+        <h1>All <?php echo $count; ?> characters from the database</h1>
     </header>
     <nav class="navbar">
         <ul class="navlist">

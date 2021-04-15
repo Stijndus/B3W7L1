@@ -20,7 +20,7 @@
 </head>
 <body>
 <header>
-        <h1>Alle <?php echo $count; ?> locaties uit de database</h1>
+        <h1>All <?php echo $count; ?> locations from the database</h1>
         <a class="backbutton" href="index.php"><i class="fas fa-long-arrow-alt-left"></i> Terug</a>
     </header>
     <div id="container">

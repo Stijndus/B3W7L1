@@ -25,7 +25,7 @@
 <body>
     <header>
         <h1><?php echo  $result['name']  ?></h1>
-        <a class="backbutton" href="index.php"><i class="fas fa-long-arrow-alt-left"></i> Terug</a>
+        <a class="backbutton" href="index.php"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
     </header>
     <div id="container">
         <div class="detail">

@@ -41,5 +41,15 @@
         return $stmt;
     }
 
+    function addLocation($name){
+        $pdo = dbCon();
+
+        $stmt = "INSERT INTO locations(name) VALUES (:names)";
+        $stmt = $pdo->prepare($stmt);
+        $stmt->bindParam(':names', $name);
+        $stmt->execute();
+        return $stmt;
+    }
+
 
 ?>
