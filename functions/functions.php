@@ -51,5 +51,16 @@
         return $stmt;
     }
 
+    function removeLocation($name){
+        $pdo = dbCon();
+
+        $stmt = "DELETE FROM locations WHERE id=:names";
+        $stmt = $pdo->prepare($stmt);
+        $stmt->bindParam(":names", $name);
+        $stmt->execute();
+        return $stmt;
+    }
+
+
 
 ?>

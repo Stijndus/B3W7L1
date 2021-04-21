@@ -3,9 +3,10 @@
     include 'functions/db_con.php';
     include 'functions/functions.php';
 
-    $result = selectAllLocations();
 
-    $count  = count($result);
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        removeLocation($_POST['remLoc']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -23,18 +24,21 @@
 
 <body>
     <header>
-        <h1>All <?php echo $count; ?> locations from the database</h1>
-        <a class="backbutton" href="index.php"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
+        <h1>Remove location</h1>
+        <a class="backbutton" href="locations.php"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
     </header>
     <div id="container">
-        <h2>Name</h2>
-        <?php foreach($result as $row){ ?>
-        <p class="locationName"><?php echo $row['name']; ?></p>
-        <?php } ?>
-        <a href="create.php"><i class="fas fa-plus-square"></i> Add location</a>
-        <a href="delete.php"><i class="fas fa-trash-alt"></i> Delete location</a>
+        <form method="POST" action="">
+            <label>Delete</label>
+            <select name="remLoc">
+                <option value="" selected disabled hidden>Choose here</option>
+                <?php foreach(selectAllLocations() as $location){?>
+                <option value="<?php echo $location['id'];?>"><?php echo $location['name'];?></option>
+                <?php }?>
+            </select>
+            <input type="submit" value="Delete">
+        </form>
     </div>
-    
     <footer>&copy; Stijn Dusseldorp 2020</footer>
 </body>
 
