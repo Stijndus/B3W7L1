@@ -53,12 +53,13 @@
 
     function removeLocation($name){
         $pdo = dbCon();
-
-        $stmt = "DELETE FROM locations WHERE id=:names";
+        $name = implode("' , '", $name);
+        $stmt = "DELETE FROM locations WHERE name IN ('$name')";
         $stmt = $pdo->prepare($stmt);
-        $stmt->bindParam(":names", $name);
         $stmt->execute();
-        return $stmt;
+        $name = explode("' , '", $name);
+        $name = implode(",", $name);
+        return $name;
     }
 
 

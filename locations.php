@@ -6,6 +6,11 @@
     $result = selectAllLocations();
 
     $count  = count($result);
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+       $locationNames = removeLocation($_POST['location']);
+        header("Location: locations.php?deleted=$locationNames");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -28,14 +33,22 @@
     </header>
     <div id="container">
         <h2>Name</h2>
-        <?php foreach($result as $row){ ?>
-        <p class="locationName"><?php echo $row['name']; ?></p>
-        <?php } ?>
+        <?php if(!empty($_GET['added'])){?>
+            <h4 style='color: limegreen;'>'<?php echo $_GET['added'];?>' added succesfully!</h4>
+        <?}if(!empty($_GET['deleted'])){?>
+            <h4 style='color: red;'>'<?php echo $_GET['deleted'];?>' deleted succesfully!</h4>
+        <?php }?>
+        <form method="POST" action='' onsubmit="return confirm('Are you sure that you want to delete these locations?')">
+            <?php foreach($result as $row){ ?>
+            <input type="checkbox" name="location[]" value="<?php echo $row['name'] ?>"><p class="locationName"><?php echo $row['name']; ?></p>
+            <?php } ?>
+            <input class="delete" type="submit" value="Delete">
+        </form>
+
         <a href="create.php"><i class="fas fa-plus-square"></i> Add location</a>
-        <a href="delete.php"><i class="fas fa-trash-alt"></i> Delete location</a>
     </div>
-    
-    <footer>&copy; Stijn Dusseldorp 2020</footer>
+
+    <footer>&copy; Stijn Dusseldorp 2021</footer>
 </body>
 
 </html>

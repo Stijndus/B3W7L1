@@ -115,10 +115,15 @@ header .backbutton {
 }
 
 .locationName{
+    display: inline-block;
     padding: 0;
     margin: 5;
+    width: 940px;
 }
 
+.delete{
+    width: 100%;
+}
 
 footer {
     margin-top: 10px;
